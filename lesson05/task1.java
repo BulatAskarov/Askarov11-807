@@ -2,17 +2,18 @@ package com.company;
 
 import java.util.Scanner;
 
-public class task1 {
+public class classwork {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = 1;
         String s;
         int a = 0;
+        int x = 0;
         int b;
         while (1 == n) {
             System.out.println("введите 1/0 чтобы вкл/выкл калькулятор");
             n = sc.nextInt();
-            if (a == 0) {
+            if (x == 0) {
                 a = sc.nextInt();
             }
             String op = sc.next();
@@ -32,7 +33,9 @@ public class task1 {
             System.out.println("сбросить?");
             s = sc.next();
             if (s.equals("да")) {
-                a = 0;
+                x = 0;
+            } else {
+                x = -1;
             }
         }
     }
