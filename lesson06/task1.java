@@ -3,31 +3,23 @@ package com.company;
 import java.util.Scanner;
 
 public class task1 {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int a= sc.nextInt();
-        String arr[]= new String[a];
-        for (int i = 0; i < a; i++)  arr[i]=sc.next();
-        Sort(arr);
-        for (int i = 0; i < a; i++) {
-            System.out.print(arr[i]+" ");
+        System.out.println("введите колво слов");
+        int n = sc.nextInt();
+        System.out.println("введитке массив");
+        String arr[] = new String[n];
+        int max = 0;
+        for (int i = 0; i < n - 1; i++) {
+            arr[i] = sc.next();
         }
-        }
-
-        static String[] Sort(String[] arr) {
-        int n = arr.length;
-        for (int i = 0; i < n; i++) {
-            int im = 0;
-            for (int j = 0; j < n - i; j++) {
-                if (arr[im].length() < arr[j].length()) {
-                    im = j;
-                }
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = i + 1; j < n - 2; j++) {
+                if (arr[i]s)
             }
-            String buf = arr[im];
-            arr[im] = arr[n - 1 - i];
-            arr[n - 1 - i] = buf;
-
         }
-        return arr;
+
     }
+
+}
 }
