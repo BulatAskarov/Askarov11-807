@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Scanner;
 
-public class task5{
+public class task5 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("введите число строк и столбцов");
@@ -27,17 +27,17 @@ public class task5{
         }
         if (a == m) {
             int z = 0;
-            int l = -1;
-            int v = -1;
+            int l = 0;
+            int v = 0;
+            int k = 1;
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < b; j++) {
+                    for (int o = 0; o < n; o++) {
+                        z += matrix[n - k][l] * matrix1[v][o];
+                        k++;
+                    }
                     l++;
                     v++;
-                    n += 1;
-                    a += 1;
-                    for (int o = 0; o < n; o++) {
-                        z += matrix[n - 1][l] * matrix1[v][a - 1];
-                    }
                     System.out.println(z);
                 }
             }
