@@ -56,10 +56,10 @@ public class IntArrayList implements IntList {
 
     @Override
     public void remove(int index) {
-        while (elements[index + 1] != Integer.parseInt(null)) {
+        while (index != count) {
             elements[index++] = elements[index + 1];
         }
-        elements[index] = Integer.parseInt(null);
+        count--;
     }
 
 
@@ -87,7 +87,7 @@ public class IntArrayList implements IntList {
 
     @Override
     public void addAll(IntList intList) {
-        for (int i = 0; i < intList.size(); i++) {
+        for (int i = 1; i < intList.size(); i++) {
             for (int element : elements) {
                 if (element == 0) {
                     element = intList.get(i);
