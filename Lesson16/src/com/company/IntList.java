@@ -31,4 +31,6 @@ public interface IntList {
 
     //возвращает индекс первого вхождения элемента с данным значением
     int indexOf(int value);
+
+    Iterator iterator();
 }

@@ -14,7 +14,7 @@ public class IntArrayList implements IntList {
 
     @Override
     public int size() {
-        return elements.length;
+        return count;
     }
 
     @Override
@@ -65,59 +65,79 @@ public class IntArrayList implements IntList {
 
     @Override
     public void sort() {
-        int[] list = elements;
-        int[] SortList = new int[elements.length];
-        int max = Integer.MIN_VALUE;
-        for (int i = 0; i < elements.length; i++) {
-            for (int element : list) {
-                if (element > max) {
-                    max = element;
+        int a;
+        for (int j = 0; j < count; j++) {
+            for (int i = 1; i < count; i++) {
+                if (elements[i] < elements[i - 1]) {
+                    a = elements[i];
+                    elements[i] = elements[i - 1];
+                    elements[i - 1] = a;
                 }
             }
-            for (int element : list) {
-                if (element == max) {
-                    element = Integer.parseInt(null);
-                    break;
-                }
-            }
-            SortList[i] = max;
-            max = Integer.MIN_VALUE;
         }
     }
 
     @Override
     public void addAll(IntList intList) {
         for (int i = 1; i < intList.size(); i++) {
-            for (int element : elements) {
-                if (element == 0) {
-                    element = intList.get(i);
-                    break;
-                }
-            }
+            elements[count + 1] = intList.get(i);
         }
     }
 
     @Override
     public void addAll(IntList intList, int startPosition) {
         for (int i = 0; i < intList.size(); i++) {
-            elements[startPosition + i] = intList.get(i);
+            elements[startPosition + 1 + i] = intList.get(i);
         }
     }
 
     @Override
     public int[] toArray() {
-        return elements;
+        int[] arr = new int[count];
+        for (int i = 0; i < count; i++) {
+            arr[i] = elements[i];
+        }
+        return arr;
     }
 
     @Override
     public int indexOf(int value) {
-        int retern = 0;
-        for (int element : elements){
-            if (element == value) {
-                retern = value;
+        int r = 0;
+        for (int i = 0; i < count; i++) {
+            if (elements[i] == value) {
+                r = i;
                 break;
             }
         }
-        return retern;
+        if (r == 0) {
+            System.out.println("no such value");
+        }
+        return r;
+    }
+
+    @Override
+    public Iterator iterator() {
+        return new MyIter();
+    }
+
+    class MyIter implements Iterator {
+        private int currentIndex;
+
+        public MyIter() {
+            currentIndex = 0;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return currentIndex < count;
+        }
+
+        @Override
+        public int next() {
+//            int val = elements[currentIndex];
+//            currentIndex++;
+//            return val;
+            return elements[currentIndex++];
+        }
     }
 }

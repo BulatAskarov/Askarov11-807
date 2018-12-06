@@ -7,10 +7,11 @@ public class Main {
         list.add(42);//{42}
         System.out.println(list.get(0));
         IntList list2 = new IntArrayList();
-        list2.add(43);
-        list2.add(44);
-        list2.add(45);//{43, 44, 45}
+        list2.add(46);
+        list2.add(47);
+        list2.add(45);
         list.addAll(list2);
-        list.indexOf(42);
+        list2.sort();
+        System.out.println(list2.indexOf(47));
     }
 }
