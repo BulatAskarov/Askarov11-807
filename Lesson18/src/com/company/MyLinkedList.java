@@ -4,7 +4,7 @@ public class MyLinkedList<T> {
     private MyNode head;
     private int count = 0;
 
-    public MyNode myNode() {
+    public MyNode returnHead() {
         return head;
     }
 
@@ -81,7 +81,7 @@ public class MyLinkedList<T> {
 
     public void AddEnd(MyLinkedList<T> elements) {
         MyNode<T> my = head;
-        MyNode<T> h = elements.myNode();
+        MyNode<T> h = elements.returnHead();
         while ((my.getNext() != null)) {
             my = my.getNext();
         }
@@ -95,8 +95,15 @@ public class MyLinkedList<T> {
         }
     }
 
-    public void AddMidl(MyLinkedList<T> elements) {
-
+    public void AddMidl(MyLinkedList<T> elements, int index) {
+        if (index < 0 || index > count) {
+            throw new IndexOutOfBoundsException("Index: " + index + " вне границ");
+        }
+        MyNode<T> my = head;
+        MyNode<T> h = elements.returnHead();
+        for (int i = 0; i < index - 1; i++) {
+            my = my.getNext();
+        }
     }
 
 }
