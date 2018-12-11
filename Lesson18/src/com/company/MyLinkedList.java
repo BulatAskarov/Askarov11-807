@@ -4,22 +4,22 @@ public class MyLinkedList<T> {
     private MyNode head;
     private int count = 0;
 
-    public MyNode myNode (){
+    public MyNode myNode() {
         return head;
     }
 
-    public int getCount(){
+    public int getCount() {
         return count;
     }
 
-    public void add(T e){ //работает также как и в IntLinkedList
+    public void add(T e) { //работает также как и в IntLinkedList
         MyNode<T> newNode;
         newNode = new MyNode();
         newNode.setValue(e);
         newNode.setNext(null);
-        if (head != null){
+        if (head != null) {
             MyNode<T> current = head;
-            while ((current.getNext()) != null){
+            while ((current.getNext()) != null) {
                 current = current.getNext();
             }
             current.setNext(newNode);
@@ -29,9 +29,9 @@ public class MyLinkedList<T> {
         count++;
     }
 
-    public T get(int index){//работает также как и в IntLinkedList
-        if (index < 0 || index >= count){
-            throw new  IndexOutOfBoundsException("IndexOutOfBoundsException");
+    public T get(int index) {//работает также как и в IntLinkedList
+        if (index < 0 || index >= count) {
+            throw new IndexOutOfBoundsException("IndexOutOfBoundsException");
         }
         MyNode<T> current = head;
         for (int i = 0; i < index; i++) {
@@ -41,7 +41,7 @@ public class MyLinkedList<T> {
         return current.getValue();
     }
 
-    public void remove(int index){//работает также как и в IntLinkedList
+    public void remove(int index) {//работает также как и в IntLinkedList
         if (index < 0 || index >= count) {
             throw new IndexOutOfBoundsException("Index: " + index + " вне границ");
         }
@@ -58,17 +58,17 @@ public class MyLinkedList<T> {
         count--;
     }
 
-    public boolean HasValue(T e){
+    public boolean HasValue(T e) {
         boolean a = false;
         MyNode<T> value = head;
-        if ((head.getValue()) != null){//если 1ый елемент не 0 запускает цикл
+        if ((head.getValue()) != null) {//если 1ый елемент не 0 запускает цикл
             int i = 0;
-            while (!(value.getValue()).equals(e) && i < count - 1){ //ищет похожее занчение
+            while (!(value.getValue()).equals(e) && i < count - 1) { //ищет похожее занчение
                 value = value.getNext();
                 i++;
             }
         }
-        if ((value.getValue()).equals(e)){//если value равен искомому значению присваевает true
+        if ((value.getValue()).equals(e)) {//если value равен искомому значению присваевает true
             a = true;
         }
         return a;
@@ -79,20 +79,24 @@ public class MyLinkedList<T> {
         return arr;
     }
 
-    public void AddEnd(MyLinkedList<T> elements){
+    public void AddEnd(MyLinkedList<T> elements) {
         MyNode<T> my = head;
-        MyNode h = elements.myNode();
+        MyNode<T> h = elements.myNode();
         while ((my.getNext() != null)) {
             my = my.getNext();
         }
+        
         for (int i = 0; i < elements.getCount(); i++) {
-            my.setNext(h);
+            MyNode<T> newNode = new MyNode<>();
+            newNode.setValue(h.getValue());
+            my.setNext(newNode);
+            my = newNode;
             h = h.getNext();
             count++;
         }
     }
 
-    public void AddMidl(MyLinkedList<T> elements){
+    public void AddMidl(MyLinkedList<T> elements) {
 
     }
 
