@@ -85,7 +85,6 @@ public class MyLinkedList<T> {
         while ((my.getNext() != null)) {
             my = my.getNext();
         }
-        
         for (int i = 0; i < elements.getCount(); i++) {
             MyNode<T> newNode = new MyNode<>();
             newNode.setValue(h.getValue());
