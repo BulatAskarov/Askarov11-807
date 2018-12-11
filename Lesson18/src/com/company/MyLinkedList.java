@@ -4,14 +4,18 @@ public class MyLinkedList<T> {
     private MyNode head;
     private int count = 0;
 
+    public int getCount(){
+        return count;
+    }
+
     public void add(T e){ //работает также как и в IntLinkedList
-        MyNode newNode;
+        MyNode<T> newNode;
         newNode = new MyNode();
         newNode.setValue(e);
         newNode.setNext(null);
         if (head != null){
-            MyNode current = head;
-            while (current.getNext() != null){
+            MyNode<T> current = head;
+            while ((current.getNext()) != null){
                 current = current.getNext();
             }
             current.setNext(newNode);
@@ -25,12 +29,12 @@ public class MyLinkedList<T> {
         if (index < 0 || index >= count){
             throw new  IndexOutOfBoundsException("IndexOutOfBoundsException");
         }
-        MyNode current = head;
+        MyNode<T> current = head;
         for (int i = 0; i < index; i++) {
             current = current.getNext();
         }
 
-        return (T) current.getValue();
+        return current.getValue();
     }
 
     public void remove(int index){//работает также как и в IntLinkedList
@@ -40,11 +44,11 @@ public class MyLinkedList<T> {
         if (index == 0) {
             head = head.getNext();
         } else {
-            MyNode beforeRemovable = head;
+            MyNode<T> beforeRemovable = head;
             for (int i = 0; i < index - 1; i++) {
                 beforeRemovable = beforeRemovable.getNext();
             }
-            MyNode nodeToRemove = beforeRemovable.getNext();
+            MyNode<T> nodeToRemove = beforeRemovable.getNext();
             beforeRemovable.setNext(nodeToRemove.getNext());
         }
         count--;
@@ -52,8 +56,8 @@ public class MyLinkedList<T> {
 
     public boolean HasValue(T e){
         boolean a = false;
-        MyNode value = head;
-        if (!head.equals(null)){//если 1ый елемент не 0 запускает цикл
+        MyNode<T> value = head;
+        if ((head.getValue()) != null){//если 1ый елемент не 0 запускает цикл
             int i = 0;
             while (!(value.getValue()).equals(e) && i < count - 1){ //ищет похожее занчение
                 value = value.getNext();
@@ -72,7 +76,15 @@ public class MyLinkedList<T> {
     }
 
     public void AddEnd(MyLinkedList<T> elements){
+        MyNode<T> my = head;
+        while ((my.getNext() != null)) {
+            my = my.getNext();
+        }
+        for (int i = 0; i < elements.getCount() - 1; i++) {
+            T a = elements.get(i);
+            my.setNext(a);
 
+        }
     }
 
     public void AddMidl(MyLinkedList<T> elements){
