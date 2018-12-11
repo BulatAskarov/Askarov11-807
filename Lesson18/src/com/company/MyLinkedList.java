@@ -4,6 +4,10 @@ public class MyLinkedList<T> {
     private MyNode head;
     private int count = 0;
 
+    public MyNode myNode (){
+        return head;
+    }
+
     public int getCount(){
         return count;
     }
@@ -77,13 +81,14 @@ public class MyLinkedList<T> {
 
     public void AddEnd(MyLinkedList<T> elements){
         MyNode<T> my = head;
+        MyNode h = elements.myNode();
         while ((my.getNext() != null)) {
             my = my.getNext();
         }
-        for (int i = 0; i < elements.getCount() - 1; i++) {
-            T a = elements.get(i);
-            my.setNext(a);
-
+        for (int i = 0; i < elements.getCount(); i++) {
+            my.setNext(h);
+            h = h.getNext();
+            count++;
         }
     }
 
