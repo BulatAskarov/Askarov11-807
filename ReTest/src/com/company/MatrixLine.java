@@ -24,12 +24,11 @@ public class MatrixLine {
                 min = count;
                 index = i;
             }
+            count = 0;
         }
-        int g = 0;
         int sum = 0;
-        while (g != index) {
-            sum += matrix[index][g];
-            g++;
+        for (int i = 0; i < maxIndex; i++) {
+            sum+=matrix[index][i];
         }
         return sum;
     }
