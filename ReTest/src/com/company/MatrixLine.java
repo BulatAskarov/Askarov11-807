@@ -34,6 +34,8 @@ public class MatrixLine {
     }
 
     public boolean near(int x, int y) {
+        x--;
+        y--;
         if (x != index - 1 || y != index - 1 || x == 0 || y == 0) {
             if (matrix[x][y] == matrix[x + 1][y + 1] || matrix[x][y] == matrix[x + 1][y] || matrix[x][y] == matrix[x][y + 1]) {
                 near = true;
