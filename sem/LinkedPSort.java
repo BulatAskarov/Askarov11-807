@@ -3,7 +3,7 @@ package com.company;
 import java.util.LinkedList;
 
 public class LinkedPSort {
-    private int iterCunt = 0;// КОЛ-ВО ИТЕРАЦИЙ
+    private int iterCount = 0;// КОЛ-ВО ИТЕРАЦИЙ
 
     public LinkedStack[] stacks(int[] arr) {    //СОЗДАНИЕ СТЭКОВ
         LinkedStack[] stacks = new LinkedStack[arr.length]; // МАССИВ ДЛЯ СОЗДАНИЯ СТЭКОВ
@@ -29,7 +29,7 @@ public class LinkedPSort {
             } else {
                 if (arr[i] <= stacks[0].showElem()) {
                     stacks[0].add(arr[i]);
-                    iterCunt++;
+                    iterCount++;
                 } else {
                     while (flag == 0) { //БИНАРНЫЙ ПОИСК НУЖНОЙ СТОПКИ
                         if (stacks[mid].showElem() >= arr[i] && stacks[mid - 1].showElem() < arr[i]) {
@@ -43,12 +43,12 @@ public class LinkedPSort {
                                 mid = (last + first) / 2;
                             }
                         }
-                        iterCunt++;
+                        iterCount++;
                     }
                     stacks[mid].add(arr[i]);
                 }
             }
-            iterCunt++;
+            iterCount++;
         }
         LinkedStack[] stacks1 = new LinkedStack[count]; // СОЗДАНИЕ НОВОГО МАССИВА СТЭКОВ ДЛИНЫ КОЛ-ВА СТЭКОВ
         for (int j = 0; j < stacks1.length; j++) { // И КОПИРОВАНИЕ
@@ -84,17 +84,17 @@ public class LinkedPSort {
                         stacks[i].removeElem();
                         i = stacks.length - elems.getCount();
                     }
-                    iterCunt++;
+                    iterCount++;
                 }
             }
-            iterCunt++;
+            iterCount++;
             arr[j] = elems.showElem();
             elems.removeElem();
         }
         return arr;
     }
 
-    public int getIterCunt() {
-        return iterCunt;
+    public int getIterCount() {
+        return iterCount;
     }
 }

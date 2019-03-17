@@ -1,7 +1,7 @@
 package com.company;
 
 public class PSort {
-    private int iterCunt = 0;// КОЛ-ВО ИТЕРАЦИЙ
+    private int iterCount = 0;// КОЛ-ВО ИТЕРАЦИЙ
 
     private Stack[] stacks(int[] arr) {    //СОЗДАНИЕ СТЭКОВ
         Stack[] stacks = new Stack[arr.length]; // МАССИВ ДЛЯ СОЗДАНИЯ СТЭКОВ
@@ -27,7 +27,7 @@ public class PSort {
             } else {
                 if (arr[i] <= stacks[0].showElem()) {
                     stacks[0].add(arr[i]);
-                    iterCunt++;
+                    iterCount++;
                 } else {
                     while (flag == 0) { //БИНАРНЫЙ ПОИСК НУЖНОЙ СТОПКИ
                         if (stacks[mid].showElem() >= arr[i] && stacks[mid - 1].showElem() < arr[i]) {
@@ -41,12 +41,12 @@ public class PSort {
                                 mid = (last + first) / 2;
                             }
                         }
-                        iterCunt++;
+                        iterCount++;
                     }
                     stacks[mid].add(arr[i]);
                 }
             }
-            iterCunt++;
+            iterCount++;
         }
         Stack[] stacks1 = new Stack[count]; // СОЗДАНИЕ НОВОГО МАССИВА СТЭКОВ ДЛИНЫ КОЛ-ВА СТЭКОВ
         for (int j = 0; j < stacks1.length; j++) { // И КОПИРОВАНИЕ
@@ -72,17 +72,17 @@ public class PSort {
                         stacks[i].removeElem();
                         i = stacks.length - elems.getCount();
                     }
-                    iterCunt++;
+                    iterCount++;
                 }
             }
-            iterCunt++;
+            iterCount++;
             arr[j] = elems.showElem();
             elems.removeElem();
         }
         return arr;
     }
 
-    public int getIterCunt(){
-        return iterCunt;
+    public int getIterCount(){
+        return iterCount;
     }
 }
